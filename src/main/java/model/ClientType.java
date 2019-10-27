@@ -1,4 +1,4 @@
-package controller.model;
+package model;
 
 public enum  ClientType {
     REGULAR,

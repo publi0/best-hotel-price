@@ -1,7 +1,7 @@
-package controller.business;
+package business;
 
-import controller.model.Client;
-import controller.model.ClientType;
+import model.Client;
+import model.ClientType;
 
 import java.io.BufferedReader;
 import java.io.File;

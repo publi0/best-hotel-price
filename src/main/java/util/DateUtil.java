@@ -1,4 +1,4 @@
-package controller.util;
+package util;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;

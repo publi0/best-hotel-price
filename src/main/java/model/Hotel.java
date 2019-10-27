@@ -1,7 +1,4 @@
-package controller.model;
-
-import java.time.LocalDate;
-import java.util.List;
+package model;
 
 public class Hotel extends HotelPrice {
     private Integer classification;
@@ -22,8 +19,8 @@ public class Hotel extends HotelPrice {
         return name;
     }
 
-    public double CalculateHotelPrice(List<LocalDate> dates, ClientType clientType) {
-        return dates.stream().mapToDouble(it -> this.GetPrice(it, clientType)).sum();
+    public double CalculateHotelPrice(Client client) {
+        return client.getDates().stream().mapToDouble(it -> this.getPrice(it, client.getClientType())).sum();
     }
 
 }
