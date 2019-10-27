@@ -37,7 +37,5 @@ class CalculateHotelPriceTest {
         assertEquals(new CalculateHotelPrice(hotels, new Client(ClientType.REGULAR, localDates04)).getBestHotel(), "Lakewood", "Ridgewood is the best price");
         assertEquals(new CalculateHotelPrice(hotels, new Client(ClientType.REWARDS, localDates04)).getBestHotel(), "Ridgewood", "Ridgewood is the best price");
 
-
-
     }
 }

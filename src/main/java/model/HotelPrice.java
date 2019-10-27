@@ -4,20 +4,20 @@ import util.DateUtil;
 
 import java.time.LocalDate;
 
-class HotelPrice {
+public class HotelPrice {
     private Double weekPrice;
     private Double weekEndPrice;
     private Double fidelityWeekPrice;
     private Double fidelityWeekEndPrice;
 
-    protected HotelPrice(Double weekPrice, Double weekEndPrice, Double fidelityWeekPrice, Double fidelityWeekEndPrice) {
+    public HotelPrice(Double weekPrice, Double weekEndPrice, Double fidelityWeekPrice, Double fidelityWeekEndPrice) {
         this.weekPrice = weekPrice;
         this.weekEndPrice = weekEndPrice;
         this.fidelityWeekPrice = fidelityWeekPrice;
         this.fidelityWeekEndPrice = fidelityWeekEndPrice;
     }
 
-    protected double getPrice(LocalDate date, ClientType clientType) {
+    public double getPrice(LocalDate date, ClientType clientType) {
         if (DateUtil.IsWeekend(date)) {
             if (clientType == ClientType.REWARDS) {
                 return fidelityWeekEndPrice;

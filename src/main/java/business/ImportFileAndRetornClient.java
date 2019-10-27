@@ -15,30 +15,35 @@ import java.util.Locale;
 public class ImportFileAndRetornClient {
 
     private File inputFile;
+    private String datesString;
+    private String typeString;
 
     public ImportFileAndRetornClient(String path) {
         this.inputFile = new File(path);
     }
 
     public Client getClient() throws Exception {
-        String[] condition = readFileAndReturnStringArray();
-        return new Client(inputToClientType(condition[0]), inputToLocalDate(condition[1]));
+        readFile();
+        return new Client(getType(), getLocalDate());
     }
 
 
-    private String[] readFileAndReturnStringArray() throws Exception {
+    private void readFile() throws Exception {
         BufferedReader br = new BufferedReader(new FileReader(inputFile));
         String line = br.readLine();
         if (!line.isBlank() || !line.isEmpty()) {
-            return line.split(":");
+           String[] conditions = line.split(":");
+            datesString = conditions[1];
+            typeString = conditions[0];
+
         } else {
             throw new Exception("File is empty or null");
         }
     }
 
-    private List<LocalDate> inputToLocalDate(String stringInput) {
+    private List<LocalDate> getLocalDate() {
         List<LocalDate> dates = new ArrayList<>();
-        String[] stringDates = stringInput.split(",");
+        String[] stringDates = datesString.split(",");
         DateTimeFormatter dateFormated = DateTimeFormatter.ofPattern("dMMMyyyy", Locale.ENGLISH);
         for (String stringDate : stringDates) {
             String[] parts = stringDate.split("\\(");
@@ -47,7 +52,8 @@ public class ImportFileAndRetornClient {
         return dates;
     }
 
-    private ClientType inputToClientType(String clientType) throws Exception {
+    private ClientType getType() throws Exception {
+        String clientType = typeString;
         if (clientType.equals("Regular")) {
             return ClientType.REGULAR;
         } else if (clientType.equals("Rewards")) {
