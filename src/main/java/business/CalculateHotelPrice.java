@@ -9,8 +9,8 @@ public class CalculateHotelPrice {
     private List<Hotel> availablehotels;
     private Client client;
 
-    public CalculateHotelPrice(List<Hotel> availablehotels, Client client) {
-        this.availablehotels = availablehotels;
+    public CalculateHotelPrice(List<Hotel> availableHotels, Client client) {
+        this.availablehotels = availableHotels;
         this.client = client;
     }
 
